@@ -6,9 +6,7 @@ import ru.job4j.puzzle.firuges.Figure;
 import java.util.Arrays;
 
 /**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
+ * @author Vasiliy Orlov.
  * @version $Id$
  * @since 0.1
  */
@@ -71,6 +69,22 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int row = 0; row < table.length; row++) {
+            int a = 0;
+            int b = 0;
+            for (int column = 0; column < table.length; column++) {
+                if (table[row][column] == 1) {
+                    a++;
+                }
+                if (table[column][row] == 1) {
+                    b++;
+                }
+            }
+            if (a == table.length || b == table.length) {
+                result = true;
+                break;
+            }
+        }
         return result;
     }
 
